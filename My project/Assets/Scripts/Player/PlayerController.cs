@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
+    public Transform itemPivot;
     [SerializeField] private float _moveSpeeed;
     [SerializeField] private float _sprintSpeeed;
     [SerializeField] private Transform _orientation;
