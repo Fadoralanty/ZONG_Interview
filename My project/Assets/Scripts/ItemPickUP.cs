@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using FMODUnity;
+using FMODUnity;
 using UnityEngine;
 
 public class ItemPickUP : MonoBehaviour, IInteractable
 {
-    // [SerializeField] private EventReference pickUpSound;
+    [SerializeField] private EventReference pickUpSound;
     [SerializeField] private GameObject WorldSpaceCanvas;
+    [SerializeField] private bool isSecondSequence;
     private UI _ui;
     private PlayerController _playerController;
     private Collider _collider;
@@ -16,6 +17,10 @@ public class ItemPickUP : MonoBehaviour, IInteractable
         _playerController = GameManager.Instance.PlayerController;
         _ui = GameManager.Instance.UI;
         _collider = GetComponent<Collider>();
+        if (isSecondSequence)
+        {
+            OnInteractHandler();
+        }
     }
     
 
@@ -25,10 +30,12 @@ public class ItemPickUP : MonoBehaviour, IInteractable
     }
     private void OnInteractHandler()
     {
-        //AudioManager.Instance.PlayOneShot(pickUpSound, transform.position);
+        AudioManager.Instance.PlayOneShot(pickUpSound, transform.position);
         transform.position = _playerController.itemPivot.position;
         transform.parent = _playerController.itemPivot;
         _collider.enabled = false;
+        _playerController.sphere = gameObject;
+        _playerController.hasSphere = true;
         Destroy(WorldSpaceCanvas);
         _ui.ToggleMenu();
     }

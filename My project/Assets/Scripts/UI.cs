@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 //using FMODUnity;
 using UnityEngine;
 
 public class UI : MonoBehaviour
 {
     //Different UI Screens
+    public GameObject screenMessage;
+    public TextMeshProUGUI screenMessageText; 
     [SerializeField] private GameObject MenuScreenUI;
     [SerializeField] private GameObject PauseMenuScreenUI;
     [SerializeField] private InteractPrompt InteractPrompt;
-
     [SerializeField] private Animator weaponsAnimator;
     [SerializeField] private Animator instrumentsAnimator;
     [SerializeField] private Animator pointsAnimator;
@@ -118,6 +120,16 @@ public class UI : MonoBehaviour
     public void ClosePointsMenu()
     {
         pointsAnimator.Play("ClosePointsMenu");
+        PauseGame(false);
+    }    
+    public void OpenInstrumentsMenu()
+    {
+        instrumentsAnimator.Play("OpenInstrumentsMenu");
+        PauseGame(true);
+    }
+    public void CloseInstrumentsMenu()
+    {
+        instrumentsAnimator.Play("CloseInstrumentsMenu");
         PauseGame(false);
     }
     private void OnDisable()
