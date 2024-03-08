@@ -11,6 +11,9 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject PauseMenuScreenUI;
     [SerializeField] private InteractPrompt InteractPrompt;
 
+    [SerializeField] private Animator weaponsAnimator;
+    [SerializeField] private Animator instrumentsAnimator;
+    [SerializeField] private Animator pointsAnimator;
     // [SerializeField] private EventReference OpenInventorySFX;
     // [SerializeField] private EventReference CloseInventorySFX;
     // [SerializeField] private EventReference OpenPauseSFX;
@@ -39,7 +42,11 @@ public class UI : MonoBehaviour
         {
             TogglePauseMenu();
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void ShowInteractPrompt(string text)
@@ -92,7 +99,27 @@ public class UI : MonoBehaviour
         Cursor.lockState = value? CursorLockMode.None : CursorLockMode.Locked;
 
     }
-    
+
+    public void OpenWeaponsMenu()
+    {
+        weaponsAnimator.Play("OpenWeaponsMenu");
+        PauseGame(true);
+    }
+    public void CloseWeaponsMenu()
+    {
+        weaponsAnimator.Play("CloseWeaponsMenu");
+        PauseGame(false);
+    }    
+    public void OpenPointsMenu()
+    {
+        pointsAnimator.Play("OpenPointsMenu");
+        PauseGame(true);
+    }
+    public void ClosePointsMenu()
+    {
+        pointsAnimator.Play("ClosePointsMenu");
+        PauseGame(false);
+    }
     private void OnDisable()
     {
         PauseGame(false);
