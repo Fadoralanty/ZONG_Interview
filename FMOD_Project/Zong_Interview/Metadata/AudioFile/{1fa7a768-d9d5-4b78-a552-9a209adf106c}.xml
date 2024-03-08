@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1fa7a768-d9d5-4b78-a552-9a209adf106c}">
+		<property name="assetPath">
+			<value>Modern11.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2857142857142858</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5a23eb51-0a0e-449c-98a6-52368a7453c0}</destination>
+		</relationship>
+	</object>
+</objects>
